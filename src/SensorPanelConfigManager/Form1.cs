@@ -2,12 +2,16 @@
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using SensorPanelConfigManager.CFG;
+using SensorPanelConfigManager.Utils;
 
 namespace SensorPanelConfigManager
 {
     public partial class Form1 : Form
     {
+        private const string RegistryRunPath = "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+
         private int[] Intervals = new int[] { 100, 300, 500, 800, 1000, 1500, 2000 };
 
         private int Setting_Interval_MOBO;
@@ -64,6 +68,16 @@ namespace SensorPanelConfigManager
             textBox_Info_CurrentPos_X.Text = cur_win_pos[0];
             textBox_Info_CurrentPos_Y.Text = cur_win_pos[1];
 
+            //Auto Start
+            if(WinRegistry.ReadRegistry(RegistryRunPath, "P!XSensorPanel", "UNKNOWN") != "UNKNOWN")
+            {
+                checkBox_panel_autostart.Checked = true;
+            }
+            else
+            {
+                checkBox_panel_autostart.Checked = false;
+            }
+
         }
 
         #region ComboBoxes Selection
@@ -112,7 +126,19 @@ namespace SensorPanelConfigManager
         #region CheckBoxes
         private void checkBox_panel_autostart_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("UNFINISHED", "UNFINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (checkBox_panel_autostart.Checked)
+            {
+                WinRegistry.WriteRegistry(RegistryRunPath, "P!XSensorPanel", Path.Combine(Environment.CurrentDirectory, "SensorPanelWinForms.exe"));
+            }
+            else
+            {
+                if(WinRegistry.ReadRegistry(RegistryRunPath,"P!XSensorPanel","UNKNOWN") != "UNKNOWN")
+                {
+                    string tmp_path = @"Software\Microsoft\Windows\CurrentVersion\Run";
+                    RegistryKey tmpKey = Registry.CurrentUser.OpenSubKey(tmp_path, true);
+                    tmpKey.DeleteValue("P!XSensorPanel");
+                }
+            }
         }
         #endregion CheckBoxes
 

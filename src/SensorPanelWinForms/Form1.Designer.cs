@@ -257,11 +257,12 @@
             this.logInLabel5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInLabel5.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.logInLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.logInLabel5.Location = new System.Drawing.Point(579, 0);
+            this.logInLabel5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.logInLabel5.Location = new System.Drawing.Point(164, 0);
             this.logInLabel5.Name = "logInLabel5";
-            this.logInLabel5.Size = new System.Drawing.Size(218, 33);
+            this.logInLabel5.Size = new System.Drawing.Size(636, 33);
             this.logInLabel5.TabIndex = 3;
-            this.logInLabel5.Text = "Version: TEST";
+            this.logInLabel5.Text = "Version: TEST V2 ODA SO";
             this.logInLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // gpu_info_box

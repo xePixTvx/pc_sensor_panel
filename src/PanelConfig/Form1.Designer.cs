@@ -32,8 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MainForm = new Hura_Theme.HuraForm();
             this.Button_Exit = new Hura_Theme.HuraButton();
-            this.logInTabControl1 = new Login_Theme.LogInTabControl();
+            this.logInTabControl = new Login_Theme.LogInTabControl();
             this.tabPage_Main = new System.Windows.Forms.TabPage();
+            this.Button_ChangeAccentColor = new System.Windows.Forms.Button();
+            this.logInLabel7 = new Login_Theme.LogInLabel();
+            this.SensorUpdateInterval_Numeric = new Login_Theme.LogInNumeric();
+            this.ScreenTime_Numeric = new Login_Theme.LogInNumeric();
+            this.logInLabel6 = new Login_Theme.LogInLabel();
+            this.logInLabel5 = new Login_Theme.LogInLabel();
             this.Button_ClosePanel = new Hura_Theme.HuraButton();
             this.Button_StartRestartPanel = new Hura_Theme.HuraButton();
             this.Button_Save = new Hura_Theme.HuraButton();
@@ -66,12 +72,10 @@
             this.logInLabel1 = new Login_Theme.LogInLabel();
             this.PositionX_Numeric = new Login_Theme.LogInNumeric();
             this.updateCurrentWinPos_Timer = new System.Windows.Forms.Timer(this.components);
-            this.logInLabel5 = new Login_Theme.LogInLabel();
-            this.logInLabel6 = new Login_Theme.LogInLabel();
-            this.ScreenTime_Numeric = new Login_Theme.LogInNumeric();
-            this.SensorUpdateInterval_Numeric = new Login_Theme.LogInNumeric();
+            this.logInLabel8 = new Login_Theme.LogInLabel();
+            this.ToggleButton_AutoStart = new Login_Theme.LogInOnOffSwitch();
             this.MainForm.SuspendLayout();
-            this.logInTabControl1.SuspendLayout();
+            this.logInTabControl.SuspendLayout();
             this.tabPage_Main.SuspendLayout();
             this.tabPage_Position.SuspendLayout();
             this.logInGroupBox2.SuspendLayout();
@@ -84,7 +88,7 @@
             this.MainForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.MainForm.ColorScheme = Hura_Theme.HuraForm.ColorSchemes.Dark;
             this.MainForm.Controls.Add(this.Button_Exit);
-            this.MainForm.Controls.Add(this.logInTabControl1);
+            this.MainForm.Controls.Add(this.logInTabControl);
             this.MainForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainForm.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.MainForm.ForeColor = System.Drawing.Color.White;
@@ -109,29 +113,33 @@
             this.Button_Exit.UseVisualStyleBackColor = false;
             this.Button_Exit.Click += new System.EventHandler(this.Button_Exit_Click);
             // 
-            // logInTabControl1
+            // logInTabControl
             // 
-            this.logInTabControl1.ActiveColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.logInTabControl1.BackTabColour = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.logInTabControl1.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.logInTabControl1.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.logInTabControl1.Controls.Add(this.tabPage_Main);
-            this.logInTabControl1.Controls.Add(this.tabPage_Position);
-            this.logInTabControl1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.logInTabControl1.HorizontalLineColour = System.Drawing.Color.White;
-            this.logInTabControl1.ItemSize = new System.Drawing.Size(240, 32);
-            this.logInTabControl1.Location = new System.Drawing.Point(3, 33);
-            this.logInTabControl1.Name = "logInTabControl1";
-            this.logInTabControl1.SelectedIndex = 0;
-            this.logInTabControl1.Size = new System.Drawing.Size(882, 438);
-            this.logInTabControl1.TabIndex = 0;
-            this.logInTabControl1.TextColour = System.Drawing.Color.White;
-            this.logInTabControl1.UpLineColour = System.Drawing.Color.White;
+            this.logInTabControl.ActiveColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.logInTabControl.BackTabColour = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.logInTabControl.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.logInTabControl.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.logInTabControl.Controls.Add(this.tabPage_Main);
+            this.logInTabControl.Controls.Add(this.tabPage_Position);
+            this.logInTabControl.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.logInTabControl.HorizontalLineColour = System.Drawing.Color.White;
+            this.logInTabControl.ItemSize = new System.Drawing.Size(240, 32);
+            this.logInTabControl.Location = new System.Drawing.Point(3, 33);
+            this.logInTabControl.Name = "logInTabControl";
+            this.logInTabControl.SelectedIndex = 0;
+            this.logInTabControl.Size = new System.Drawing.Size(882, 438);
+            this.logInTabControl.TabIndex = 0;
+            this.logInTabControl.TextColour = System.Drawing.Color.White;
+            this.logInTabControl.UpLineColour = System.Drawing.Color.White;
             // 
             // tabPage_Main
             // 
             this.tabPage_Main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.tabPage_Main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage_Main.Controls.Add(this.ToggleButton_AutoStart);
+            this.tabPage_Main.Controls.Add(this.logInLabel8);
+            this.tabPage_Main.Controls.Add(this.Button_ChangeAccentColor);
+            this.tabPage_Main.Controls.Add(this.logInLabel7);
             this.tabPage_Main.Controls.Add(this.SensorUpdateInterval_Numeric);
             this.tabPage_Main.Controls.Add(this.ScreenTime_Numeric);
             this.tabPage_Main.Controls.Add(this.logInLabel6);
@@ -145,6 +153,92 @@
             this.tabPage_Main.Size = new System.Drawing.Size(874, 398);
             this.tabPage_Main.TabIndex = 0;
             this.tabPage_Main.Text = "Main";
+            // 
+            // Button_ChangeAccentColor
+            // 
+            this.Button_ChangeAccentColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Button_ChangeAccentColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Button_ChangeAccentColor.Location = new System.Drawing.Point(357, 124);
+            this.Button_ChangeAccentColor.Name = "Button_ChangeAccentColor";
+            this.Button_ChangeAccentColor.Size = new System.Drawing.Size(109, 25);
+            this.Button_ChangeAccentColor.TabIndex = 9;
+            this.Button_ChangeAccentColor.UseVisualStyleBackColor = false;
+            this.Button_ChangeAccentColor.Click += new System.EventHandler(this.Button_ChangeAccentColor_Click);
+            // 
+            // logInLabel7
+            // 
+            this.logInLabel7.AutoSize = true;
+            this.logInLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.logInLabel7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.logInLabel7.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel7.Location = new System.Drawing.Point(6, 124);
+            this.logInLabel7.Name = "logInLabel7";
+            this.logInLabel7.Size = new System.Drawing.Size(132, 25);
+            this.logInLabel7.TabIndex = 8;
+            this.logInLabel7.Text = "Accent Color:";
+            // 
+            // SensorUpdateInterval_Numeric
+            // 
+            this.SensorUpdateInterval_Numeric.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.SensorUpdateInterval_Numeric.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.SensorUpdateInterval_Numeric.ButtonColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.SensorUpdateInterval_Numeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SensorUpdateInterval_Numeric.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SensorUpdateInterval_Numeric.Location = new System.Drawing.Point(357, 16);
+            this.SensorUpdateInterval_Numeric.Maximum = ((long)(5));
+            this.SensorUpdateInterval_Numeric.Minimum = ((long)(1));
+            this.SensorUpdateInterval_Numeric.Name = "SensorUpdateInterval_Numeric";
+            this.SensorUpdateInterval_Numeric.SecondBorderColour = System.Drawing.Color.White;
+            this.SensorUpdateInterval_Numeric.Size = new System.Drawing.Size(109, 24);
+            this.SensorUpdateInterval_Numeric.TabIndex = 7;
+            this.SensorUpdateInterval_Numeric.Text = "0";
+            this.SensorUpdateInterval_Numeric.Value = ((long)(1));
+            this.SensorUpdateInterval_Numeric.Click += new System.EventHandler(this.SensorUpdateInterval_Numeric_Click);
+            // 
+            // ScreenTime_Numeric
+            // 
+            this.ScreenTime_Numeric.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.ScreenTime_Numeric.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ScreenTime_Numeric.ButtonColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.ScreenTime_Numeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScreenTime_Numeric.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ScreenTime_Numeric.Location = new System.Drawing.Point(357, 52);
+            this.ScreenTime_Numeric.Maximum = ((long)(30));
+            this.ScreenTime_Numeric.Minimum = ((long)(5));
+            this.ScreenTime_Numeric.Name = "ScreenTime_Numeric";
+            this.ScreenTime_Numeric.SecondBorderColour = System.Drawing.Color.White;
+            this.ScreenTime_Numeric.Size = new System.Drawing.Size(109, 24);
+            this.ScreenTime_Numeric.TabIndex = 6;
+            this.ScreenTime_Numeric.Text = "0";
+            this.ScreenTime_Numeric.Value = ((long)(5));
+            this.ScreenTime_Numeric.Click += new System.EventHandler(this.ScreenTime_Numeric_Click);
+            // 
+            // logInLabel6
+            // 
+            this.logInLabel6.AutoSize = true;
+            this.logInLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.logInLabel6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.logInLabel6.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel6.Location = new System.Drawing.Point(6, 51);
+            this.logInLabel6.Name = "logInLabel6";
+            this.logInLabel6.Size = new System.Drawing.Size(213, 25);
+            this.logInLabel6.TabIndex = 4;
+            this.logInLabel6.Text = "Screen Time(Seconds):";
+            // 
+            // logInLabel5
+            // 
+            this.logInLabel5.AutoSize = true;
+            this.logInLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.logInLabel5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.logInLabel5.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel5.Location = new System.Drawing.Point(6, 15);
+            this.logInLabel5.Name = "logInLabel5";
+            this.logInLabel5.Size = new System.Drawing.Size(310, 25);
+            this.logInLabel5.TabIndex = 3;
+            this.logInLabel5.Text = "Sensor Update Interval(Seconds):";
             // 
             // Button_ClosePanel
             // 
@@ -641,67 +735,32 @@
             this.updateCurrentWinPos_Timer.Interval = 1;
             this.updateCurrentWinPos_Timer.Tick += new System.EventHandler(this.updateCurrentWinPos_Timer_Tick);
             // 
-            // logInLabel5
+            // logInLabel8
             // 
-            this.logInLabel5.AutoSize = true;
-            this.logInLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.logInLabel5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.logInLabel5.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.logInLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.logInLabel5.Location = new System.Drawing.Point(6, 15);
-            this.logInLabel5.Name = "logInLabel5";
-            this.logInLabel5.Size = new System.Drawing.Size(310, 25);
-            this.logInLabel5.TabIndex = 3;
-            this.logInLabel5.Text = "Sensor Update Interval(Seconds):";
+            this.logInLabel8.AutoSize = true;
+            this.logInLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.logInLabel8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.logInLabel8.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel8.Location = new System.Drawing.Point(6, 203);
+            this.logInLabel8.Name = "logInLabel8";
+            this.logInLabel8.Size = new System.Drawing.Size(110, 25);
+            this.logInLabel8.TabIndex = 10;
+            this.logInLabel8.Text = "Auto Start:";
             // 
-            // logInLabel6
+            // ToggleButton_AutoStart
             // 
-            this.logInLabel6.AutoSize = true;
-            this.logInLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.logInLabel6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.logInLabel6.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.logInLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.logInLabel6.Location = new System.Drawing.Point(6, 51);
-            this.logInLabel6.Name = "logInLabel6";
-            this.logInLabel6.Size = new System.Drawing.Size(213, 25);
-            this.logInLabel6.TabIndex = 4;
-            this.logInLabel6.Text = "Screen Time(Seconds):";
-            // 
-            // ScreenTime_Numeric
-            // 
-            this.ScreenTime_Numeric.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.ScreenTime_Numeric.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.ScreenTime_Numeric.ButtonColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.ScreenTime_Numeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScreenTime_Numeric.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ScreenTime_Numeric.Location = new System.Drawing.Point(357, 52);
-            this.ScreenTime_Numeric.Maximum = ((long)(30));
-            this.ScreenTime_Numeric.Minimum = ((long)(5));
-            this.ScreenTime_Numeric.Name = "ScreenTime_Numeric";
-            this.ScreenTime_Numeric.SecondBorderColour = System.Drawing.Color.White;
-            this.ScreenTime_Numeric.Size = new System.Drawing.Size(109, 24);
-            this.ScreenTime_Numeric.TabIndex = 6;
-            this.ScreenTime_Numeric.Text = "0";
-            this.ScreenTime_Numeric.Value = ((long)(5));
-            this.ScreenTime_Numeric.Click += new System.EventHandler(this.ScreenTime_Numeric_Click);
-            // 
-            // SensorUpdateInterval_Numeric
-            // 
-            this.SensorUpdateInterval_Numeric.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.SensorUpdateInterval_Numeric.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.SensorUpdateInterval_Numeric.ButtonColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.SensorUpdateInterval_Numeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SensorUpdateInterval_Numeric.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SensorUpdateInterval_Numeric.Location = new System.Drawing.Point(357, 16);
-            this.SensorUpdateInterval_Numeric.Maximum = ((long)(5));
-            this.SensorUpdateInterval_Numeric.Minimum = ((long)(1));
-            this.SensorUpdateInterval_Numeric.Name = "SensorUpdateInterval_Numeric";
-            this.SensorUpdateInterval_Numeric.SecondBorderColour = System.Drawing.Color.White;
-            this.SensorUpdateInterval_Numeric.Size = new System.Drawing.Size(109, 24);
-            this.SensorUpdateInterval_Numeric.TabIndex = 7;
-            this.SensorUpdateInterval_Numeric.Text = "0";
-            this.SensorUpdateInterval_Numeric.Value = ((long)(1));
-            this.SensorUpdateInterval_Numeric.Click += new System.EventHandler(this.SensorUpdateInterval_Numeric_Click);
+            this.ToggleButton_AutoStart.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.ToggleButton_AutoStart.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ToggleButton_AutoStart.Location = new System.Drawing.Point(357, 203);
+            this.ToggleButton_AutoStart.Name = "ToggleButton_AutoStart";
+            this.ToggleButton_AutoStart.NonToggledTextColourderColour = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.ToggleButton_AutoStart.Size = new System.Drawing.Size(109, 25);
+            this.ToggleButton_AutoStart.TabIndex = 12;
+            this.ToggleButton_AutoStart.Text = "logInOnOffSwitch2";
+            this.ToggleButton_AutoStart.TextColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ToggleButton_AutoStart.Toggled = Login_Theme.LogInOnOffSwitch.Toggles.NotToggled;
+            this.ToggleButton_AutoStart.ToggledColour = System.Drawing.Color.Red;
             // 
             // Form1
             // 
@@ -716,7 +775,7 @@
             this.Name = "Form1";
             this.Text = "Mario\'s Senor Panel - Config Manager";
             this.MainForm.ResumeLayout(false);
-            this.logInTabControl1.ResumeLayout(false);
+            this.logInTabControl.ResumeLayout(false);
             this.tabPage_Main.ResumeLayout(false);
             this.tabPage_Main.PerformLayout();
             this.tabPage_Position.ResumeLayout(false);
@@ -731,7 +790,7 @@
         #endregion
 
         private Hura_Theme.HuraForm MainForm;
-        private Login_Theme.LogInTabControl logInTabControl1;
+        private Login_Theme.LogInTabControl logInTabControl;
         private System.Windows.Forms.TabPage tabPage_Main;
         private System.Windows.Forms.TabPage tabPage_Position;
         private Hura_Theme.HuraButton Button_Exit;
@@ -770,6 +829,10 @@
         private Login_Theme.LogInLabel logInLabel6;
         private Login_Theme.LogInNumeric ScreenTime_Numeric;
         private Login_Theme.LogInNumeric SensorUpdateInterval_Numeric;
+        private Login_Theme.LogInLabel logInLabel7;
+        private System.Windows.Forms.Button Button_ChangeAccentColor;
+        private Login_Theme.LogInLabel logInLabel8;
+        private Login_Theme.LogInOnOffSwitch ToggleButton_AutoStart;
     }
 }
 

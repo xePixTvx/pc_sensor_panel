@@ -15,6 +15,7 @@ namespace PanelConfig
         private int[] Setting_WinPos;
         private int Setting_ScreenTime;
         private int Setting_SensorUpdateInterval;
+        private int[] Setting_AccentColor;
 
 
         public Form1()
@@ -37,6 +38,13 @@ namespace PanelConfig
             //Get Sensor Update Interval Setting
             Setting_SensorUpdateInterval = Int32.Parse(Config.GetSetting(SettingTypes.SENSOR_UPDATE_INTERVAL));
             SensorUpdateInterval_Numeric.Value = Setting_SensorUpdateInterval / 1000;
+
+            //Get Accent Color Setting
+            string[] tmp_color = Config.GetSetting(SettingTypes.ACCENT_COLOR).Split(';');
+            Setting_AccentColor = new int[] { Int32.Parse(tmp_color[0]), Int32.Parse(tmp_color[1]), Int32.Parse(tmp_color[2]) };
+
+            //Update Form Colors
+            UpdateColors();
         }
 
         //Exit App
@@ -51,6 +59,27 @@ namespace PanelConfig
             string[] tmp_curWinPos = Config.GetSetting(SettingTypes.CUR_WIN_POS).Split(';');
             PanelCurrent_PosX.Text = tmp_curWinPos[0];
             PanelCurrent_PosY.Text = tmp_curWinPos[1];
+        }
+
+        //Update Accent Colors
+        private void UpdateColors()
+        {
+            System.Drawing.Color AccentColor = System.Drawing.Color.FromArgb(Setting_AccentColor[0], Setting_AccentColor[1], Setting_AccentColor[2]);
+
+            logInTabControl.UpLineColour = AccentColor;
+            logInTabControl.HorizontalLineColour = AccentColor;
+
+            SensorUpdateInterval_Numeric.SecondBorderColour = AccentColor;
+            ScreenTime_Numeric.SecondBorderColour = AccentColor;
+
+            PositionX_Numeric.SecondBorderColour = AccentColor;
+            PositionY_Numeric.SecondBorderColour = AccentColor;
+
+            Button_ChangeAccentColor.BackColor = AccentColor;
+
+            ToggleButton_AutoStart.ToggledColour = AccentColor;
+
+            MainForm.Refresh();
         }
 
 
@@ -117,6 +146,20 @@ namespace PanelConfig
             Setting_ScreenTime = (int)ScreenTime_Numeric.Value * 1000;
         }
 
+        //Change Accent Color Button
+        private void Button_ChangeAccentColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog dialog = new ColorDialog();
+            dialog.AllowFullOpen = true;
+            dialog.FullOpen = true;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Setting_AccentColor[0] = dialog.Color.R;
+                Setting_AccentColor[1] = dialog.Color.G;
+                Setting_AccentColor[2] = dialog.Color.B;
+            }
+            UpdateColors();
+        }
 
 
 
@@ -132,6 +175,9 @@ namespace PanelConfig
             //Screen Time
             Config.WriteSetting(SettingTypes.SCREEN_TIME, Setting_ScreenTime.ToString());
 
+            //Accent Color
+            Config.WriteSetting(SettingTypes.ACCENT_COLOR, Setting_AccentColor[0] + ";" + Setting_AccentColor[1] + ";" + Setting_AccentColor[2]);
+
 
             MessageBox.Show("Settings Saved!", "DONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -139,7 +185,6 @@ namespace PanelConfig
 
 
         #endregion Main Tab
-
 
         #region Position Tab
 
@@ -242,10 +287,14 @@ namespace PanelConfig
             string[] tmp_curWinPos = Config.GetSetting(SettingTypes.CUR_WIN_POS).Split(';');
             PositionX_Numeric.Value = Int32.Parse(tmp_curWinPos[0]);
             PositionY_Numeric.Value = Int32.Parse(tmp_curWinPos[1]);
+            Setting_WinPos[0] = Int32.Parse(tmp_curWinPos[0]);
+            Setting_WinPos[1] = Int32.Parse(tmp_curWinPos[1]);
         }
 
 
 
         #endregion Position Tab
+
+
     }
 }

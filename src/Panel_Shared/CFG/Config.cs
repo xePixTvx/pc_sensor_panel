@@ -33,6 +33,12 @@ namespace Panel_Shared.CFG
             {
                 WinRegistry.WriteRegistry(RegistryConfigPath, SettingTypes.SENSOR_UPDATE_INTERVAL.ToString(), "1000");
             }
+
+            //Accent Color
+            if (WinRegistry.ReadRegistry(RegistryConfigPath, SettingTypes.ACCENT_COLOR.ToString(), "UNKNOWN") == "UNKNOWN")
+            {
+                WinRegistry.WriteRegistry(RegistryConfigPath, SettingTypes.ACCENT_COLOR.ToString(), "255;255;255");
+            }
         }
 
         public static string GetSetting(SettingTypes type)

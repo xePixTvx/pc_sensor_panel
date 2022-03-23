@@ -25,6 +25,9 @@ namespace PanelViewer
         private List<Screen> ScreenList = new List<Screen>();
         private Cycling Cycler;
 
+        //Accent Color
+        private int[] AccentColor;
+
 
         public Form1()
         {
@@ -49,6 +52,12 @@ namespace PanelViewer
             int updateInterval = Int32.Parse(Config.GetSetting(SettingTypes.SENSOR_UPDATE_INTERVAL));
             sensorUpdate_Timer.Interval = updateInterval;
 
+            //Get Accent Color
+            string[] tmp_color = Config.GetSetting(SettingTypes.ACCENT_COLOR).Split(';');
+            AccentColor = new int[] { Int32.Parse(tmp_color[0]), Int32.Parse(tmp_color[1]), Int32.Parse(tmp_color[2]) };
+
+            //Update Accent Colors
+            UpdateColors();
 
             //Start Intro
             StartIntro();
@@ -58,6 +67,25 @@ namespace PanelViewer
         {
             //Update Current Location in Registry
             Config.WriteSetting(SettingTypes.CUR_WIN_POS, Location.X + ";" + Location.Y);
+        }
+
+
+        //Update Accent Colors
+        private void UpdateColors()
+        {
+            System.Drawing.Color tmpAccentColor = System.Drawing.Color.FromArgb(AccentColor[0], AccentColor[1], AccentColor[2]);
+
+            intro_progress.ProgressColour = tmpAccentColor;
+
+            mobo_mainTemp_progress.ProgressColour = tmpAccentColor;
+            mobo_chipTemp_progress.ProgressColour = tmpAccentColor;
+
+            cpu_mainTemp_progress.ProgressColour = tmpAccentColor;
+            cpu_diodeTemp_progress.ProgressColour = tmpAccentColor;
+            cpu_usage_progress.ProgressColour = tmpAccentColor;
+
+            gpu_mainTemp_progress.ProgressColour = tmpAccentColor;
+            gpu_usage_progress.ProgressColour = tmpAccentColor;
         }
 
         #region Intro

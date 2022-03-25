@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using Panel_Shared.CFG;
 
 
-//LAST WORKED ON: Position Tab
+//LAST WORKED ON: Autostart
 
 
 namespace PanelConfig
@@ -16,6 +16,7 @@ namespace PanelConfig
         private int Setting_ScreenTime;
         private int Setting_SensorUpdateInterval;
         private int[] Setting_AccentColor;
+        private bool Setting_Autostart;
 
 
         public Form1()
@@ -42,6 +43,12 @@ namespace PanelConfig
             //Get Accent Color Setting
             string[] tmp_color = Config.GetSetting(SettingTypes.ACCENT_COLOR).Split(';');
             Setting_AccentColor = new int[] { Int32.Parse(tmp_color[0]), Int32.Parse(tmp_color[1]), Int32.Parse(tmp_color[2]) };
+
+            //Autostart
+            string tmp_autoStart = Config.GetSetting(SettingTypes.AUTOSTART_PANEL);
+            Setting_Autostart = (tmp_autoStart == "True") ? true : false;
+            //Update AutoStart ToggleButton
+            ToggleButton_AutoStart.Toggled = (Setting_Autostart == true) ? Login_Theme.LogInOnOffSwitch.Toggles.Toggled : Login_Theme.LogInOnOffSwitch.Toggles.NotToggled;
 
             //Update Form Colors
             UpdateColors();
@@ -178,6 +185,9 @@ namespace PanelConfig
             //Accent Color
             Config.WriteSetting(SettingTypes.ACCENT_COLOR, Setting_AccentColor[0] + ";" + Setting_AccentColor[1] + ";" + Setting_AccentColor[2]);
 
+            //Auto Start
+            Config.WriteSetting(SettingTypes.AUTOSTART_PANEL, Setting_Autostart.ToString());
+
 
             MessageBox.Show("Settings Saved!", "DONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -293,8 +303,19 @@ namespace PanelConfig
 
 
 
+
         #endregion Position Tab
 
-
+        private void ToggleButton_AutoStart_Click(object sender, EventArgs e)
+        {
+            if (ToggleButton_AutoStart.Toggled == Login_Theme.LogInOnOffSwitch.Toggles.Toggled)
+            {
+                Setting_Autostart = true;
+            }
+            else
+            {
+                Setting_Autostart = false;
+            }
+        }
     }
 }

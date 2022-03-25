@@ -34,6 +34,8 @@
             this.Button_Exit = new Hura_Theme.HuraButton();
             this.logInTabControl = new Login_Theme.LogInTabControl();
             this.tabPage_Main = new System.Windows.Forms.TabPage();
+            this.ToggleButton_AutoStart = new Login_Theme.LogInOnOffSwitch();
+            this.logInLabel8 = new Login_Theme.LogInLabel();
             this.Button_ChangeAccentColor = new System.Windows.Forms.Button();
             this.logInLabel7 = new Login_Theme.LogInLabel();
             this.SensorUpdateInterval_Numeric = new Login_Theme.LogInNumeric();
@@ -72,8 +74,6 @@
             this.logInLabel1 = new Login_Theme.LogInLabel();
             this.PositionX_Numeric = new Login_Theme.LogInNumeric();
             this.updateCurrentWinPos_Timer = new System.Windows.Forms.Timer(this.components);
-            this.logInLabel8 = new Login_Theme.LogInLabel();
-            this.ToggleButton_AutoStart = new Login_Theme.LogInOnOffSwitch();
             this.MainForm.SuspendLayout();
             this.logInTabControl.SuspendLayout();
             this.tabPage_Main.SuspendLayout();
@@ -153,6 +153,33 @@
             this.tabPage_Main.Size = new System.Drawing.Size(874, 398);
             this.tabPage_Main.TabIndex = 0;
             this.tabPage_Main.Text = "Main";
+            // 
+            // ToggleButton_AutoStart
+            // 
+            this.ToggleButton_AutoStart.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.ToggleButton_AutoStart.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ToggleButton_AutoStart.Location = new System.Drawing.Point(357, 203);
+            this.ToggleButton_AutoStart.Name = "ToggleButton_AutoStart";
+            this.ToggleButton_AutoStart.NonToggledTextColourderColour = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.ToggleButton_AutoStart.Size = new System.Drawing.Size(109, 25);
+            this.ToggleButton_AutoStart.TabIndex = 12;
+            this.ToggleButton_AutoStart.TextColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ToggleButton_AutoStart.Toggled = Login_Theme.LogInOnOffSwitch.Toggles.NotToggled;
+            this.ToggleButton_AutoStart.ToggledColour = System.Drawing.Color.Red;
+            this.ToggleButton_AutoStart.Click += new System.EventHandler(this.ToggleButton_AutoStart_Click);
+            // 
+            // logInLabel8
+            // 
+            this.logInLabel8.AutoSize = true;
+            this.logInLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.logInLabel8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.logInLabel8.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel8.Location = new System.Drawing.Point(6, 203);
+            this.logInLabel8.Name = "logInLabel8";
+            this.logInLabel8.Size = new System.Drawing.Size(110, 25);
+            this.logInLabel8.TabIndex = 10;
+            this.logInLabel8.Text = "Auto Start:";
             // 
             // Button_ChangeAccentColor
             // 
@@ -734,33 +761,6 @@
             this.updateCurrentWinPos_Timer.Enabled = true;
             this.updateCurrentWinPos_Timer.Interval = 1;
             this.updateCurrentWinPos_Timer.Tick += new System.EventHandler(this.updateCurrentWinPos_Timer_Tick);
-            // 
-            // logInLabel8
-            // 
-            this.logInLabel8.AutoSize = true;
-            this.logInLabel8.BackColor = System.Drawing.Color.Transparent;
-            this.logInLabel8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.logInLabel8.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.logInLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.logInLabel8.Location = new System.Drawing.Point(6, 203);
-            this.logInLabel8.Name = "logInLabel8";
-            this.logInLabel8.Size = new System.Drawing.Size(110, 25);
-            this.logInLabel8.TabIndex = 10;
-            this.logInLabel8.Text = "Auto Start:";
-            // 
-            // ToggleButton_AutoStart
-            // 
-            this.ToggleButton_AutoStart.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.ToggleButton_AutoStart.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.ToggleButton_AutoStart.Location = new System.Drawing.Point(357, 203);
-            this.ToggleButton_AutoStart.Name = "ToggleButton_AutoStart";
-            this.ToggleButton_AutoStart.NonToggledTextColourderColour = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.ToggleButton_AutoStart.Size = new System.Drawing.Size(109, 25);
-            this.ToggleButton_AutoStart.TabIndex = 12;
-            this.ToggleButton_AutoStart.Text = "logInOnOffSwitch2";
-            this.ToggleButton_AutoStart.TextColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ToggleButton_AutoStart.Toggled = Login_Theme.LogInOnOffSwitch.Toggles.NotToggled;
-            this.ToggleButton_AutoStart.ToggledColour = System.Drawing.Color.Red;
             // 
             // Form1
             // 

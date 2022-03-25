@@ -39,6 +39,12 @@ namespace Panel_Shared.CFG
             {
                 WinRegistry.WriteRegistry(RegistryConfigPath, SettingTypes.ACCENT_COLOR.ToString(), "255;255;255");
             }
+
+            //Autostart
+            if(WinRegistry.ReadRegistry(RegistryConfigPath, SettingTypes.AUTOSTART_PANEL.ToString(), "UNKNOWN") == "UNKNOWN")
+            {
+                WinRegistry.WriteRegistry(RegistryConfigPath, SettingTypes.AUTOSTART_PANEL.ToString(), "False");
+            }
         }
 
         public static string GetSetting(SettingTypes type)

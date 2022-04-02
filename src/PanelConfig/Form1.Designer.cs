@@ -34,6 +34,9 @@
             this.Button_Exit = new Hura_Theme.HuraButton();
             this.logInTabControl = new Login_Theme.LogInTabControl();
             this.tabPage_Main = new System.Windows.Forms.TabPage();
+            this.AutoStartDelayValue_Numeric = new Login_Theme.LogInNumeric();
+            this.AutoStartDelayType_ComboBox = new Login_Theme.LogInComboBox();
+            this.logInLabel9 = new Login_Theme.LogInLabel();
             this.ToggleButton_AutoStart = new Login_Theme.LogInOnOffSwitch();
             this.logInLabel8 = new Login_Theme.LogInLabel();
             this.Button_ChangeAccentColor = new System.Windows.Forms.Button();
@@ -136,6 +139,9 @@
             // 
             this.tabPage_Main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.tabPage_Main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage_Main.Controls.Add(this.AutoStartDelayValue_Numeric);
+            this.tabPage_Main.Controls.Add(this.AutoStartDelayType_ComboBox);
+            this.tabPage_Main.Controls.Add(this.logInLabel9);
             this.tabPage_Main.Controls.Add(this.ToggleButton_AutoStart);
             this.tabPage_Main.Controls.Add(this.logInLabel8);
             this.tabPage_Main.Controls.Add(this.Button_ChangeAccentColor);
@@ -154,11 +160,66 @@
             this.tabPage_Main.TabIndex = 0;
             this.tabPage_Main.Text = "Main";
             // 
+            // AutoStartDelayValue_Numeric
+            // 
+            this.AutoStartDelayValue_Numeric.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.AutoStartDelayValue_Numeric.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.AutoStartDelayValue_Numeric.ButtonColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.AutoStartDelayValue_Numeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoStartDelayValue_Numeric.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.AutoStartDelayValue_Numeric.Location = new System.Drawing.Point(367, 248);
+            this.AutoStartDelayValue_Numeric.Maximum = ((long)(15));
+            this.AutoStartDelayValue_Numeric.Minimum = ((long)(1));
+            this.AutoStartDelayValue_Numeric.Name = "AutoStartDelayValue_Numeric";
+            this.AutoStartDelayValue_Numeric.SecondBorderColour = System.Drawing.Color.White;
+            this.AutoStartDelayValue_Numeric.Size = new System.Drawing.Size(109, 24);
+            this.AutoStartDelayValue_Numeric.TabIndex = 15;
+            this.AutoStartDelayValue_Numeric.Text = "0";
+            this.AutoStartDelayValue_Numeric.Value = ((long)(1));
+            this.AutoStartDelayValue_Numeric.Click += new System.EventHandler(this.AutoStartDelayValue_Numeric_Click);
+            // 
+            // AutoStartDelayType_ComboBox
+            // 
+            this.AutoStartDelayType_ComboBox.ArrowColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.AutoStartDelayType_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.AutoStartDelayType_ComboBox.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.AutoStartDelayType_ComboBox.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.AutoStartDelayType_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.AutoStartDelayType_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AutoStartDelayType_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.AutoStartDelayType_ComboBox.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.AutoStartDelayType_ComboBox.FormattingEnabled = true;
+            this.AutoStartDelayType_ComboBox.Items.AddRange(new object[] {
+            "Minutes",
+            "Seconds"});
+            this.AutoStartDelayType_ComboBox.LineColour = System.Drawing.Color.White;
+            this.AutoStartDelayType_ComboBox.Location = new System.Drawing.Point(498, 247);
+            this.AutoStartDelayType_ComboBox.Name = "AutoStartDelayType_ComboBox";
+            this.AutoStartDelayType_ComboBox.Size = new System.Drawing.Size(163, 26);
+            this.AutoStartDelayType_ComboBox.SqaureColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.AutoStartDelayType_ComboBox.SqaureHoverColour = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.AutoStartDelayType_ComboBox.StartIndex = 0;
+            this.AutoStartDelayType_ComboBox.TabIndex = 14;
+            this.AutoStartDelayType_ComboBox.SelectedIndexChanged += new System.EventHandler(this.AutoStartDelayType_ComboBox_SelectedIndexChanged);
+            // 
+            // logInLabel9
+            // 
+            this.logInLabel9.AutoSize = true;
+            this.logInLabel9.BackColor = System.Drawing.Color.Transparent;
+            this.logInLabel9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.logInLabel9.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logInLabel9.Location = new System.Drawing.Point(6, 247);
+            this.logInLabel9.Name = "logInLabel9";
+            this.logInLabel9.Size = new System.Drawing.Size(355, 25);
+            this.logInLabel9.TabIndex = 13;
+            this.logInLabel9.Text = "Auto Start after Windows Login Delay:";
+            // 
             // ToggleButton_AutoStart
             // 
             this.ToggleButton_AutoStart.BaseColour = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.ToggleButton_AutoStart.BorderColour = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.ToggleButton_AutoStart.Location = new System.Drawing.Point(357, 203);
+            this.ToggleButton_AutoStart.Location = new System.Drawing.Point(367, 203);
             this.ToggleButton_AutoStart.Name = "ToggleButton_AutoStart";
             this.ToggleButton_AutoStart.NonToggledTextColourderColour = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.ToggleButton_AutoStart.Size = new System.Drawing.Size(109, 25);
@@ -185,7 +246,7 @@
             // 
             this.Button_ChangeAccentColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.Button_ChangeAccentColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Button_ChangeAccentColor.Location = new System.Drawing.Point(357, 124);
+            this.Button_ChangeAccentColor.Location = new System.Drawing.Point(367, 126);
             this.Button_ChangeAccentColor.Name = "Button_ChangeAccentColor";
             this.Button_ChangeAccentColor.Size = new System.Drawing.Size(109, 25);
             this.Button_ChangeAccentColor.TabIndex = 9;
@@ -212,7 +273,7 @@
             this.SensorUpdateInterval_Numeric.ButtonColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.SensorUpdateInterval_Numeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SensorUpdateInterval_Numeric.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SensorUpdateInterval_Numeric.Location = new System.Drawing.Point(357, 16);
+            this.SensorUpdateInterval_Numeric.Location = new System.Drawing.Point(367, 16);
             this.SensorUpdateInterval_Numeric.Maximum = ((long)(5));
             this.SensorUpdateInterval_Numeric.Minimum = ((long)(1));
             this.SensorUpdateInterval_Numeric.Name = "SensorUpdateInterval_Numeric";
@@ -230,7 +291,7 @@
             this.ScreenTime_Numeric.ButtonColour = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.ScreenTime_Numeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScreenTime_Numeric.FontColour = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ScreenTime_Numeric.Location = new System.Drawing.Point(357, 52);
+            this.ScreenTime_Numeric.Location = new System.Drawing.Point(367, 52);
             this.ScreenTime_Numeric.Maximum = ((long)(30));
             this.ScreenTime_Numeric.Minimum = ((long)(5));
             this.ScreenTime_Numeric.Name = "ScreenTime_Numeric";
@@ -833,6 +894,9 @@
         private System.Windows.Forms.Button Button_ChangeAccentColor;
         private Login_Theme.LogInLabel logInLabel8;
         private Login_Theme.LogInOnOffSwitch ToggleButton_AutoStart;
+        private Login_Theme.LogInLabel logInLabel9;
+        private Login_Theme.LogInComboBox AutoStartDelayType_ComboBox;
+        private Login_Theme.LogInNumeric AutoStartDelayValue_Numeric;
     }
 }
 

@@ -44,6 +44,8 @@ namespace Panel_Shared.CFG
             if(WinRegistry.ReadRegistry(RegistryConfigPath, SettingTypes.AUTOSTART_PANEL.ToString(), "UNKNOWN") == "UNKNOWN")
             {
                 WinRegistry.WriteRegistry(RegistryConfigPath, SettingTypes.AUTOSTART_PANEL.ToString(), "False");
+                WinRegistry.WriteRegistry(RegistryConfigPath, SettingTypes.AUTOSTART_DELAY_VALUE.ToString(), "2");
+                WinRegistry.WriteRegistry(RegistryConfigPath, SettingTypes.AUTOSTART_DELAY_TYPE.ToString(), "MIN");
             }
         }
 

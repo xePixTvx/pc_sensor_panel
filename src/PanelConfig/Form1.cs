@@ -3,9 +3,10 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Panel_Shared.CFG;
+using System.Security.Principal;
 
 
-//LAST WORKED ON: Autostart
+//LAST WORKED ON: Adding a manifest file for admin request
 
 
 namespace PanelConfig
@@ -17,6 +18,8 @@ namespace PanelConfig
         private int Setting_SensorUpdateInterval;
         private int[] Setting_AccentColor;
         private bool Setting_Autostart;
+        private AutoStartDelayTypes Setting_AutoStartDelayType;
+        private double Setting_AutoStartDelayValue;
 
 
         public Form1()
@@ -44,11 +47,39 @@ namespace PanelConfig
             string[] tmp_color = Config.GetSetting(SettingTypes.ACCENT_COLOR).Split(';');
             Setting_AccentColor = new int[] { Int32.Parse(tmp_color[0]), Int32.Parse(tmp_color[1]), Int32.Parse(tmp_color[2]) };
 
+            #region Auto Start Settings
             //Autostart
             string tmp_autoStart = Config.GetSetting(SettingTypes.AUTOSTART_PANEL);
             Setting_Autostart = (tmp_autoStart == "True") ? true : false;
-            //Update AutoStart ToggleButton
+
+            //AutoStart Settings
+            Setting_AutoStartDelayType = (Config.GetSetting(SettingTypes.AUTOSTART_DELAY_TYPE) != "MIN") ? AutoStartDelayTypes.SEC : AutoStartDelayTypes.MIN;
+            Setting_AutoStartDelayValue = Double.Parse(Config.GetSetting(SettingTypes.AUTOSTART_DELAY_VALUE));
+
+            //Update AutoStart Forms
             ToggleButton_AutoStart.Toggled = (Setting_Autostart == true) ? Login_Theme.LogInOnOffSwitch.Toggles.Toggled : Login_Theme.LogInOnOffSwitch.Toggles.NotToggled;
+            AutoStartDelayValue_Numeric.Value = (long)Setting_AutoStartDelayValue;
+            if (Setting_AutoStartDelayType == AutoStartDelayTypes.MIN)
+            {
+                AutoStartDelayType_ComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                AutoStartDelayType_ComboBox.SelectedIndex = 1;
+            }
+            Update_AutoStartDelayType_ComboBox_Selected();
+
+
+            if(Setting_Autostart)
+            {
+                AutoStart.Enable(Setting_AutoStartDelayValue, Setting_AutoStartDelayType);
+            }
+            else
+            {
+                AutoStart.Disable();
+            }
+            #endregion Auto Start Settings
+
 
             //Update Form Colors
             UpdateColors();
@@ -85,6 +116,8 @@ namespace PanelConfig
             Button_ChangeAccentColor.BackColor = AccentColor;
 
             ToggleButton_AutoStart.ToggledColour = AccentColor;
+            AutoStartDelayValue_Numeric.SecondBorderColour = AccentColor;
+            AutoStartDelayType_ComboBox.LineColour = AccentColor;
 
             MainForm.Refresh();
         }
@@ -168,6 +201,64 @@ namespace PanelConfig
             UpdateColors();
         }
 
+        //Toggle AutoStart Panel Button
+        private void ToggleButton_AutoStart_Click(object sender, EventArgs e)
+        {
+            if (ToggleButton_AutoStart.Toggled == Login_Theme.LogInOnOffSwitch.Toggles.Toggled)
+            {
+                Setting_Autostart = true;
+            }
+            else
+            {
+                Setting_Autostart = false;
+            }
+        }
+
+        //On AutoStartDelayType Combobox Selected Change
+        private void AutoStartDelayType_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Update_AutoStartDelayType_ComboBox_Selected();
+        }
+
+        //On AutoStartDelayValue Numeric Click
+        private void AutoStartDelayValue_Numeric_Click(object sender, EventArgs e)
+        {
+            Setting_AutoStartDelayValue = AutoStartDelayValue_Numeric.Value;
+        }
+
+        //Update Stuff if AutoStartDelayType is Selected
+        private void Update_AutoStartDelayType_ComboBox_Selected()
+        {
+            long tmp_value = (long)Setting_AutoStartDelayValue;
+
+            if (AutoStartDelayType_ComboBox.SelectedIndex == 0)
+            {
+                Setting_AutoStartDelayType = AutoStartDelayTypes.MIN;
+                AutoStartDelayValue_Numeric.Minimum = 1;
+                AutoStartDelayValue_Numeric.Maximum = 15;
+            }
+            else
+            {
+                Setting_AutoStartDelayType = AutoStartDelayTypes.SEC;
+                AutoStartDelayValue_Numeric.Minimum = 15;
+                AutoStartDelayValue_Numeric.Maximum = 60;
+            }
+
+            if (AutoStartDelayValue_Numeric.Value < AutoStartDelayValue_Numeric.Minimum)
+            {
+                AutoStartDelayValue_Numeric.Value = AutoStartDelayValue_Numeric.Minimum;
+            }
+            else if (AutoStartDelayValue_Numeric.Value > AutoStartDelayValue_Numeric.Maximum)
+            {
+                AutoStartDelayValue_Numeric.Value = AutoStartDelayValue_Numeric.Maximum;
+            }
+            else
+            {
+                AutoStartDelayValue_Numeric.Value = tmp_value;
+            }
+            Setting_AutoStartDelayValue = AutoStartDelayValue_Numeric.Value;
+        }
+
 
 
         //Save Button
@@ -187,6 +278,16 @@ namespace PanelConfig
 
             //Auto Start
             Config.WriteSetting(SettingTypes.AUTOSTART_PANEL, Setting_Autostart.ToString());
+            Config.WriteSetting(SettingTypes.AUTOSTART_DELAY_TYPE, Setting_AutoStartDelayType.ToString());
+            Config.WriteSetting(SettingTypes.AUTOSTART_DELAY_VALUE, Setting_AutoStartDelayValue.ToString());
+            if(Setting_Autostart)
+            {
+                AutoStart.Enable(Setting_AutoStartDelayValue, Setting_AutoStartDelayType);
+            }
+            else
+            {
+                AutoStart.Disable();
+            }
 
 
             MessageBox.Show("Settings Saved!", "DONE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -306,16 +407,8 @@ namespace PanelConfig
 
         #endregion Position Tab
 
-        private void ToggleButton_AutoStart_Click(object sender, EventArgs e)
-        {
-            if (ToggleButton_AutoStart.Toggled == Login_Theme.LogInOnOffSwitch.Toggles.Toggled)
-            {
-                Setting_Autostart = true;
-            }
-            else
-            {
-                Setting_Autostart = false;
-            }
-        }
+
+
+
     }
 }
